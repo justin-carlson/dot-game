@@ -1,0 +1,221 @@
+@import url("https://rsms.me/interface/interface.css");
+input[type="range"] {
+  -webkit-appearance: none;
+  border-radius: 12px;
+  width: 15rem;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.2rem;
+  width: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: -1px;
+  background: #d3d3d3;
+}
+
+@media only screen and (max-width: 320px) {
+  .game-title {
+    width: 70%;
+    margin-bottom: 5rem;
+  }
+  .start-btn {
+    width: 5.5rem;
+    height: 2rem;
+  }
+  .start-btn svg {
+    width: 3rem;
+  }
+}
+
+@media only screen and (min-width: 321px) {
+  .game-title {
+    width: 70%;
+    max-width: 35rem;
+    margin-bottom: 5rem;
+  }
+  .start-btn {
+    width: 9rem;
+    height: 3rem;
+  }
+  .start-btn svg {
+    width: 4rem;
+  }
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  max-width: 100%;
+  overflow: hidden;
+  font-size: 16px;
+  font-family: Interface, sans-serif;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-width: 380px;
+  /* Game View */
+  /* Start Screen */
+  /* Controls */
+  /* Utils */
+}
+
+.container .game-view {
+  width: 100vw;
+  height: 100vh;
+  background-color: #333;
+  position: absolute;
+  z-index: 1;
+}
+
+.container .start-lockup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 4rem;
+  background-color: #e4e4e4;
+}
+
+.container .start-btn {
+  pointer-events: visible;
+  cursor: pointer;
+  background-color: rgba(51, 51, 51, 0.8);
+  border-radius: 50px;
+  padding: 1.1rem 1.5rem .9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .start-btn:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  pointer-events: visible;
+}
+
+.container .controls {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  position: absolute;
+  z-index: 5;
+}
+
+.container .controls--actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+}
+
+.container .controls--score {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 5rem;
+  padding: 1.2rem;
+  position: relative;
+}
+
+.container .clone-current-points {
+  height: 2.5rem;
+}
+
+.container .current-points {
+  font-size: 3rem;
+  color: #ffffff;
+  position: absolute;
+  opacity: 0;
+  top: -10px;
+}
+
+.container .score {
+  font-size: 5rem;
+  color: #d3d3d3;
+  line-height: .9;
+}
+
+.container .controls--slider {
+  height: 25px;
+  pointer-events: visible;
+}
+
+.container .controls--pause-play {
+  height: 1.2rem;
+  width: 1.2rem;
+  pointer-events: visible;
+  cursor: pointer;
+}
+
+.container .controls--pause-icon {
+  height: 100%;
+  display: none;
+  cursor: pointer;
+}
+
+.container .controls--play-icon {
+  height: 100%;
+}
+
+.container .u-show-points {
+  animation: show-points 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes show-points {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    top: -10px;
+  }
+  100% {
+    opacity: 0;
+    opacity-top: -20px;
+  }
+}
+
+.container .u-hide {
+  display: none;
+}
+
+.container .u-disable-events {
+  pointer-events: none;
+}
+
+.container .is-pause .controls--pause-icon {
+  display: block;
+}
+
+.container .is-pause .controls--play-icon {
+  display: none;
+}
+
+.container .is-selected {
+  fill: none !important;
+  stroke: #ffffff;
+  stroke-width: 1px;
+}
