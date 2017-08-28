@@ -1,0 +1,28 @@
+{
+  "name": "Dot-Game",
+  "version": "0.0.1",
+  "description": "Dot Game Design Exersize",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Justin Carlson",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/justin-matthew/justin-matthew.github.io/issues"
+  },
+  "homepage": "https://github.com/justin-matthew/justin-matthew.github.io#readme",
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gsap": "^1.20.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-pug": "^3.3.0",
+    "run-sequence": "^2.1.0",
+    "snapsvg": "^0.5.1"
+  },
+  "dependencies": {
+    "gulp-sass": "^2.0.4"
+  }
+}
