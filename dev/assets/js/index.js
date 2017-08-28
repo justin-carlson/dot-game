@@ -128,13 +128,6 @@
     /*
         Utility Functions
     */
-    function getCurrentPoints(points) {
-        let pointClone = currentPoints.cloneNode(true);
-        pointClone.classList.add('current-point');
-        document.querySelector('.controls--score').prepend(pointClone)
-        pointClone.classList.add('u-show-points');
-        pointClone.innerHTML = '+' + getPoints(points);
-    }
 
     function getGameSpeed() {
         console.log('Game Speed : ', Math.round(slider.value))
