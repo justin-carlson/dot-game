@@ -5,6 +5,7 @@
         startLockup   = document.querySelector('.start-lockup'),
         currentPoints = document.querySelector('.current-points'),
         controls      = document.querySelector('.controls'),
+        controlsScore = document.querySelector('.controls--score'),
         slider        = document.querySelector('#slider'),
         isAnimate     = false,
         gameSpeed     = undefined,
@@ -97,12 +98,12 @@
 
             // Show current points for dot
             let pointClone = currentPoints.cloneNode(true);
-            document.querySelector('.controls--score').prepend(pointClone)
+            controlsScore.prepend(pointClone);
             pointClone.classList.add('u-show-points');
             pointClone.innerHTML = '+' + getPoints(points);
 
             // Animation event when dot is selected
-            TweenMax.to(e.target, 1, { scaleX: 1.75, scaleY:1.75, transformOrigin:"50% 50%", ease: Quad.easeOut });
+            TweenMax.to(e.target, 1, { scaleX: 1.75, scaleY:1.75, transformOrigin:'50% 50%', ease: Quad.easeOut });
             TweenMax.to(e.target, .75, { alpha: 0, delay: .1, ease: Quad.easeOut,
                 onComplete: ()=> {
                     e.target.parentNode.removeChild(e.target);
