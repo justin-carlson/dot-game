@@ -68,8 +68,8 @@ body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  min-width: 380px;
-  /* Game View */
+  min-width: 320px;
+  min-width-/* Game View */
   /* Start Screen */
   /* Controls */
   /* Utils */
@@ -81,6 +81,7 @@ body {
   background-color: #333;
   position: absolute;
   z-index: 1;
+  opacity: 0;
 }
 
 .container .start-lockup {
@@ -120,6 +121,7 @@ body {
   pointer-events: none;
   position: absolute;
   z-index: 5;
+  opacity: 0;
 }
 
 .container .controls--actions {
@@ -196,6 +198,10 @@ body {
     opacity: 0;
     opacity-top: -20px;
   }
+}
+
+.container .u-cursor {
+  cursor: pointer;
 }
 
 .container .u-hide {

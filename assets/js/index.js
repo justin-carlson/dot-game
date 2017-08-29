@@ -2,7 +2,9 @@
 
     let gameView      = document.querySelector('.game-view'),
         score         = document.querySelector('.score'),
+        startLockup   = document.querySelector('.start-lockup'),
         currentPoints = document.querySelector('.current-points'),
+        controls      = document.querySelector('.controls'),
         slider        = document.querySelector('#slider'),
         isAnimate     = false,
         gameSpeed     = undefined,
@@ -20,12 +22,13 @@
     document.querySelector('.start-btn').addEventListener('click', (e)=> {
 
         // Transition View
-        TweenMax.to(document.querySelector('.start-lockup'), .5, { alpha: 0,
+        gameView.classList.remove('u-hide');
+        controls.classList.remove('u-hide');
+        TweenMax.to(gameView, 1, { alpha: 1, ease: Quad.easeOut });
+        TweenMax.to(controls, 1, { alpha: 1, ease: Quad.easeOut });
+        TweenMax.to(startLockup, 1, { alpha: 0,
             onComplete: ()=>{
-                gameView.classList.remove('u-hide');
-                document.querySelector('.controls--score').classList.remove('u-hide');
-                document.querySelector('.controls').classList.remove('u-hide');
-                document.querySelector('.start-lockup').classList.add('u-hide')
+                startLockup.classList.add('u-hide');
             }
         });
 
@@ -33,7 +36,7 @@
         gameSpeed = getGameSpeed();
 
         // Create a new dot each second
-        intervalID = setInterval(()=>{ createDot() }, 1000);
+        intervalControl(true);
         animateDots(); // Init Dot Animation
 
         // Fullscreen Android Chrome Only
@@ -48,16 +51,18 @@
         e.currentTarget.classList.toggle('is-pause');
         //Disable events when game is paused
         gameView.classList.toggle('u-disable-events');
-        //Disable dots from being created while game is paused
-        intervalControl(false);
 
         if(isAnimate) {
             animateDots();
-            intervalControl(true)
+            intervalControl(true);
+        } else {
+            //Disable dots from being created while game is paused
+            intervalControl(false);
         }
     });
+
     // Slider
-    slider.addEventListener('input', (e)=>{
+    slider.addEventListener('input', (e)=> {
         gameSpeed = getGameSpeed();
     });
 
@@ -75,7 +80,7 @@
         let dot = snap.circle(cx, cy, size);
 
         // Set Dot Data & Attributes
-        dot.attr({  'fill-opacity': size * .01, 'fill': '#fff' })
+        dot.attr({ 'fill-opacity': size * .01, 'fill': '#fff', 'cursor': 'pointer' })
         dot.data('cy', cy);
         dot.data('cx', cx);
 
@@ -97,13 +102,13 @@
             pointClone.innerHTML = '+' + getPoints(points);
 
             // Animation event when dot is selected
-            TweenMax.to(e.target, 1, { scaleX: 1.75, scaleY:1.75, transformOrigin:"50% 50%", ease: Quad.easeOut,
+            TweenMax.to(e.target, 1, { scaleX: 1.75, scaleY:1.75, transformOrigin:"50% 50%", ease: Quad.easeOut });
+            TweenMax.to(e.target, .75, { alpha: 0, delay: .1, ease: Quad.easeOut,
                 onComplete: ()=> {
                     e.target.parentNode.removeChild(e.target);
                     pointClone.parentNode.removeChild(pointClone);
                 }
             });
-            TweenMax.to(e.target, .5, { alpha: 0, delay: .1 });
         });
 
         function getPoints(points) {
@@ -128,16 +133,8 @@
     /*
         Utility Functions
     */
-    function getCurrentPoints(points) {
-        let pointClone = currentPoints.cloneNode(true);
-        pointClone.classList.add('current-point');
-        document.querySelector('.controls--score').prepend(pointClone)
-        pointClone.classList.add('u-show-points');
-        pointClone.innerHTML = '+' + getPoints(points);
-    }
-
     function getGameSpeed() {
-        console.log('Game Speed : ', Math.round(slider.value))
+        //console.log('Game Speed : ', Math.round(slider.value))
         return gameSpeed = Math.round(slider.value/2);
     };
 
@@ -164,7 +161,7 @@
     function animateDots() {
         if(isAnimate) {
             dots.forEach((dot)=> {
-                dot.data('cy', dot.data('cy') + (gameSpeed*.8)); //Choke Game Speed * .8
+                dot.data('cy', dot.data('cy') + (gameSpeed * .8)); //Choke Game Speed * .8
                 dot.attr({ cy: dot.data('cy') });
             });
             requestAnimationFrame(animateDots);
