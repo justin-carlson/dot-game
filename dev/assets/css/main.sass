@@ -27,7 +27,6 @@
 
 
 
-
 body
     margin: 0
     width: 100vw
@@ -44,15 +43,16 @@ body
     flex-direction: column
     position: relative
     overflow: hidden
-    min-width: 380px
+    min-width: 320px
 
      /* Game View */
-    .game-view
+    .game-view,
         width: 100vw
         height: 100vh
         background-color: #333
         position: absolute
         z-index: 1
+        opacity: 0
 
     /* Start Screen */
     .start-lockup
@@ -92,6 +92,7 @@ body
         pointer-events: none
         position: absolute
         z-index: 5
+        opacity: 0
 
     .controls--actions
         display: flex
@@ -116,14 +117,11 @@ body
         position: absolute
         opacity: 0
         top: -10px
-        //transition: opacity .35s ease-out;
-
 
     .score
         font-size: 5rem
         color: #d3d3d3
         line-height: .9;
-
 
     .controls--slider
         height: 25px
@@ -144,10 +142,6 @@ body
         height: 100%
 
 
-
-
-
-
     /* Utils */
     .u-show-points
         animation: show-points 1s
@@ -163,6 +157,9 @@ body
         100%
             opacity: 0
              top: -20px
+
+    .u-cursor
+        cursor: pointer
 
     .u-hide
         display: none
