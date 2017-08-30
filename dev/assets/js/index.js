@@ -162,7 +162,7 @@
     function animateDots() {
         if(isAnimate) {
             dots.forEach((dot)=> {
-                dot.data('cy', dot.data('cy') + (gameSpeed * .8)); //Choke Game Speed * .8
+                dot.data('cy', dot.data('cy') + (gameSpeed)); //Choke Game Speed * .8
                 dot.attr({ cy: dot.data('cy') });
             });
             requestAnimationFrame(animateDots);
