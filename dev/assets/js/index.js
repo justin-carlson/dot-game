@@ -9,6 +9,7 @@
         slider        = document.querySelector('#slider'),
         isAnimate     = false,
         gameSpeed     = undefined,
+        intervalID    = undefined,
         /* Snap SVG Instance Variables */
         snap          = Snap('.game-view'),
         dots          = [],
@@ -36,8 +37,7 @@
         isAnimate = true;
         gameSpeed = getGameSpeed();
 
-        // Create a new dot each second
-        intervalControl(true);
+        intervalControl(true); // Create a new dot each second
         animateDots(); // Init Dot Animation
 
         // Fullscreen Android Chrome Only
@@ -81,7 +81,7 @@
         let dot = snap.circle(cx, cy, size);
 
         // Set Dot Data & Attributes
-        dot.attr({ 'fill-opacity': size * .01, 'fill': '#fff', 'cursor': 'pointer' })
+        dot.attr({ 'fill-opacity': size * .01, 'fill': '#fff', 'cursor': 'pointer', 'pointer-events': 'visible' });
         dot.data('cy', cy);
         dot.data('cx', cx);
 
@@ -111,31 +111,31 @@
                 }
             });
         });
-
-        function getPoints(points) {
-            switch (points) {
-                case 1:  return 10; break;
-                case 2:  return 9;  break;
-                case 3:  return 8;  break;
-                case 4:  return 7;  break;
-                case 5:  return 6;  break;
-                case 6:  return 5;  break;
-                case 7:  return 4;  break;
-                case 8:  return 3;  break;
-                case 9:  return 2;  break;
-                case 10: return 1;  break;
-                default:
-                break;
-            }
-        }
     };
 
 
     /*
         Utility Functions
     */
+    function getPoints(points) {
+        switch (points) {
+            case 1:  return 10; break;
+            case 2:  return 9;  break;
+            case 3:  return 8;  break;
+            case 4:  return 7;  break;
+            case 5:  return 6;  break;
+            case 6:  return 5;  break;
+            case 7:  return 4;  break;
+            case 8:  return 3;  break;
+            case 9:  return 2;  break;
+            case 10: return 1;  break;
+            default:
+            break;
+        }
+    };
+
     function getGameSpeed() {
-        //console.log('Game Speed : ', Math.round(slider.value))
+        //console.log('Game Speed : ', (Math.round(slider.value)/2)
         return gameSpeed = Math.round(slider.value/2);
     };
 
