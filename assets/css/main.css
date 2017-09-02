@@ -1,5 +1,6 @@
 @import url("https://rsms.me/interface/interface.css");
 input[type="range"] {
+  pointer-events: none;
   -webkit-appearance: none;
   border-radius: 12px;
   width: 15rem;
@@ -12,7 +13,12 @@ input[type="range"]:focus {
   outline: none;
 }
 
+input[type=range]::-webkit-slider-runnable-track {
+  pointer-events: none;
+}
+
 input[type="range"]::-webkit-slider-thumb {
+  pointer-events: auto;
   -webkit-appearance: none;
   height: 1.2rem;
   width: 1.2rem;
