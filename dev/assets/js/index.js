@@ -135,8 +135,7 @@
     };
 
     function getGameSpeed() {
-        //console.log('Game Speed : ', (Math.round(slider.value)/2)
-        return gameSpeed = Math.round(slider.value/2);
+        return gameSpeed = (slider.value/10) * .6;
     };
 
     function getRandom(min, max) {
