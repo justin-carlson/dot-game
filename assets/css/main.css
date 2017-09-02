@@ -69,7 +69,8 @@ body {
   position: relative;
   overflow: hidden;
   min-width: 320px;
-  min-width-/* Game View */
+  background-color: #333;
+  background-color-/* Game View */
   /* Start Screen */
   /* Controls */
   /* Utils */
@@ -78,10 +79,10 @@ body {
 .container .game-view {
   width: 100vw;
   height: 100vh;
-  background-color: #333;
   position: absolute;
-  z-index: 1;
+  z-index: 9;
   opacity: 0;
+  pointer-events: none;
 }
 
 .container .start-lockup {
