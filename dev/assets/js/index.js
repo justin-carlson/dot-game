@@ -50,15 +50,16 @@
     document.querySelector('.controls--pause-play').addEventListener('click', (e)=> {
         isAnimate = !isAnimate;
         e.currentTarget.classList.toggle('is-pause');
-        //Disable events when game is paused
-        gameView.classList.toggle('u-disable-events');
 
         if(isAnimate) {
+            dots.forEach((dot)=>{ dot.node.style.pointerEvents = 'visible'; })
             animateDots();
             intervalControl(true);
         } else {
             //Disable dots from being created while game is paused
             intervalControl(false);
+            //Disable events when game is paused
+            dots.forEach((dot)=>{ dot.node.style.pointerEvents = 'none'; })
         }
     });
 
