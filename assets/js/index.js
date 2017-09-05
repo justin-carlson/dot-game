@@ -135,7 +135,8 @@
     };
 
     function getGameSpeed() {
-        return gameSpeed = (slider.value/10) * .6;
+        //console.log('Game Speed : ', (Math.round(slider.value)/59.99) * 60)
+        return gameSpeed =  Math.round(slider.value)/59.99;
     };
 
     function getRandom(min, max) {
@@ -161,8 +162,13 @@
     function animateDots() {
         if(isAnimate) {
             dots.forEach((dot)=> {
-                dot.data('cy', dot.data('cy') + (gameSpeed)); //Choke Game Speed * .8
+                dot.data('cy', dot.data('cy') + (gameSpeed));
                 dot.attr({ cy: dot.data('cy') });
+
+                // Remove Dot when outside of viewport
+                if(dot.node.cy.animVal.value > ( window.innerHeight + dot.node.r.animVal.value )) {
+                    dot.remove();
+                }
             });
             requestAnimationFrame(animateDots);
         }
