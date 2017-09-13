@@ -29,7 +29,7 @@
         TweenMax.to(gameView, 1, { alpha: 1, ease: Quad.easeOut });
         TweenMax.to(controls, 1, { alpha: 1, ease: Quad.easeOut });
         TweenMax.to(startLockup, 1, { alpha: 0,
-            onComplete: ()=>{
+            onComplete: ()=> {
                 startLockup.classList.add('u-hide');
             }
         });
@@ -52,14 +52,14 @@
         e.currentTarget.classList.toggle('is-pause');
 
         if(isAnimate) {
-            dots.forEach((dot)=>{ dot.node.style.pointerEvents = 'visible'; })
+            dots.forEach((dot)=>{ dot.node.style.pointerEvents = 'visible' })
             animateDots();
             intervalControl(true);
         } else {
             //Disable dots from being created while game is paused
             intervalControl(false);
             //Disable events when game is paused
-            dots.forEach((dot)=>{ dot.node.style.pointerEvents = 'none'; })
+            dots.forEach((dot)=>{ dot.node.style.pointerEvents = 'none' })
         }
     });
 
@@ -90,7 +90,7 @@
         dotGroup.add(dot); // Add dot to SVG group (game view)
 
         // Dot Click Handler
-        dot.click((e)=> {
+        dot.node.addEventListener('click', (e)=> {
 
             // Set Overall Score
             let points = ((e.target.r.animVal.value) * 2)/10;
@@ -119,20 +119,7 @@
         Utility Functions
     */
     function getPoints(points) {
-        switch (points) {
-            case 1:  return 10; break;
-            case 2:  return 9;  break;
-            case 3:  return 8;  break;
-            case 4:  return 7;  break;
-            case 5:  return 6;  break;
-            case 6:  return 5;  break;
-            case 7:  return 4;  break;
-            case 8:  return 3;  break;
-            case 9:  return 2;  break;
-            case 10: return 1;  break;
-            default:
-            break;
-        }
+        return 11 - points;
     };
 
     function getGameSpeed() {
@@ -145,8 +132,8 @@
     };
 
     function getSize() {
-        //console.log('Size : ', dotSize[Math.floor(Math.random() * dotSize.length)]/2)
-        return dotSize[Math.floor(Math.random() * dotSize.length)]/2;
+        //console.log('Size : ', dotSize[Math.floor(Math.random() * dotSize.length)])
+        return dotSize[Math.floor(Math.random() * dotSize.length)];
     };
 
     /*

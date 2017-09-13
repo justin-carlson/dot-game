@@ -28,35 +28,6 @@ input[type="range"]::-webkit-slider-thumb {
   background: #d3d3d3;
 }
 
-@media only screen and (max-width: 320px) {
-  .game-title {
-    width: 70%;
-    margin-bottom: 5rem;
-  }
-  .start-btn {
-    width: 5.5rem;
-    height: 2rem;
-  }
-  .start-btn svg {
-    width: 3rem;
-  }
-}
-
-@media only screen and (min-width: 321px) {
-  .game-title {
-    width: 70%;
-    max-width: 35rem;
-    margin-bottom: 5rem;
-  }
-  .start-btn {
-    width: 9rem;
-    height: 3rem;
-  }
-  .start-btn svg {
-    width: 4rem;
-  }
-}
-
 body {
   margin: 0;
   width: 100vw;
@@ -89,6 +60,11 @@ body {
   z-index: 9;
   opacity: 0;
   pointer-events: none;
+  will-change: transform;
+}
+
+.container .game-view svg > g {
+  will-change: transform;
 }
 
 .container .start-lockup {
@@ -102,16 +78,26 @@ body {
   background-color: #e4e4e4;
 }
 
+.container .game-title {
+  width: 65%;
+  max-width: 35rem;
+  margin-bottom: 2rem;
+}
+
 .container .start-btn {
   pointer-events: visible;
   cursor: pointer;
   background-color: rgba(51, 51, 51, 0.8);
   border-radius: 50px;
-  padding: 1.1rem 1.5rem .9rem 1.5rem;
+  padding: .5rem 3rem .5rem 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 2.6rem;
+}
+
+.container .start-btn svg {
+  width: 3rem;
 }
 
 .container .start-btn:hover {
