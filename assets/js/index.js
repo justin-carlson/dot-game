@@ -132,8 +132,12 @@
     };
 
     function getSize() {
-        //console.log('Size : ', dotSize[Math.floor(Math.random() * dotSize.length)])
-        return dotSize[Math.floor(Math.random() * dotSize.length)];
+        /*
+            Dividing dot size by 2 creates dots that measure
+            10, 20, 30, 40, 50, 60, 70, 80 & 90 pixels on a high density display
+        */
+        //console.log('Size : ', dotSize[Math.floor(Math.random() * dotSize.length)]/2)
+        return dotSize[Math.floor(Math.random() * dotSize.length)]/2;
     };
 
     /*
